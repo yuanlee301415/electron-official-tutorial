@@ -4,6 +4,23 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('node:path')
 
+const createWindow = () => {
+    // Create the browser window.
+    const mainWindow = new BrowserWindow({
+        width: 1280,
+        height: 800,
+        webPreferences: {
+            preload: path.join(__dirname, 'preload.js')
+        }
+    })
+
+    // 加载 index.html
+    mainWindow.loadFile('index.html')
+
+    // 打开开发工具
+    // mainWindow.webContents.openDevTools()
+}
+
 // 这段程序将会在 Electron 结束初始化
 // 和创建浏览器窗口的时候调用
 // 部分 API 在 ready 事件触发后才能使用。
@@ -25,29 +42,5 @@ app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') app.quit()
 })
 
-// 创建浏览器窗口
-function createWindow () {
-    // Create the browser window.
-    const mainWindow = new BrowserWindow({
-        width: 1280,
-        height: 800,
-        webPreferences: {
-            preload: path.join(__dirname, 'preload.js')
-        }
-    })
-
-    ipcMain.on('set-title', handleSetTitle)
-
-    // 加载 index.html
-    mainWindow.loadFile('index.html')
-
-    // 打开网页开发者工具
-    mainWindow.webContents.openDevTools()
-}
-
-// 监听来自渲染进程的 set-title 事件
-function handleSetTitle (event, title) {
-    const webContents = event.sender
-    const win = BrowserWindow.fromWebContents(webContents)
-    win.setTitle(title)
-}
+// 在当前文件中你可以引入所有的主进程代码
+// 也可以拆分成几个文件，然后用 require 导入。

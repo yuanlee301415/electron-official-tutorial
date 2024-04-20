@@ -8,9 +8,3 @@ contextBridge.exposeInMainWorld('versions', {
     // 除函数之外，我们也可以暴露变量
     buildTime: new Date().toISOString()
 })
-
-
-contextBridge.exposeInMainWorld('electronAPI', {
-    // 渲染进程调用主进程
-    setTitle: (title) => ipcRenderer.send('set-title', title),
-})
