@@ -1,7 +1,7 @@
 {
-  "name": "www.electronjs.org",
+  "name": "electron-official-tutorial",
   "version": "1.0.0",
-  "description": "Electron 官网教程",
+  "description": "[Electron 官网教程](https://www.electronjs.org/zh/docs/latest/)",
   "main": "main.js",
   "scripts": {
     "dev": "electron .",
@@ -25,5 +25,9 @@
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0"
+  },
+  "repository": "https://github.com/yuanlee301415/electron-official-tutorial",
+  "engines": {
+  	"node": ">=16"
   }
 }
