@@ -9,7 +9,6 @@ console.log('versions:', window.versions)
 ping()
 setTitle()
 openFile()
-updateCounter()
 
 async function ping() {
     const response = await window.versions.ping()
@@ -27,14 +26,5 @@ function setTitle() {
 function openFile() {
     document.getElementById('btn2').addEventListener('click', async () => {
         document.getElementById('filePath').innerText = await window.electronAPI.openFile()
-    })
-}
-
-function updateCounter() {
-    window.electronAPI.onUpdateCounter(value => {
-        const $counter = document.getElementById('counter')
-        const oldValue = Number($counter.innerText)
-        const newValue = oldValue + value
-        $counter.innerText = newValue
     })
 }

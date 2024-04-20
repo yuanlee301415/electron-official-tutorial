@@ -1,7 +1,7 @@
 // main.js
 
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, ipcMain, dialog, Menu } = require('electron')
+const { app, BrowserWindow, ipcMain, dialog } = require('electron')
 const path = require('node:path')
 
 // 这段程序将会在 Electron 结束初始化
@@ -50,8 +50,6 @@ function createWindow () {
         event.returnValue = 'hi-2'
     })
 
-    setMenu(mainWindow)
-
     // 加载 index.html
     mainWindow.loadFile('index.html')
 
@@ -70,28 +68,4 @@ function handleSetTitle (event, title) {
 async function handleFileOpen() {
     const { canceled, filePaths } = await dialog.showOpenDialog({})
     if (!canceled) return filePaths[0]
-}
-
-
-function setMenu(mainWindow) {
-    const menu = Menu.buildFromTemplate([
-        {
-            label: 'Counter',
-            submenu: [
-                {
-                    label: 'Increment',
-                    click: () => {
-                        mainWindow.webContents.send('update-counter', 1)
-                    }
-                },
-                {
-                    label: 'Decrement',
-                    click: () => {
-                        mainWindow.webContents.send('update-counter', -1)
-                    }
-                }
-            ]
-        }
-    ])
-    Menu.setApplicationMenu(menu)
 }

@@ -20,11 +20,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
     /**
      * ipcRenderer.invoke API 是在 Electron 7 中添加的，作为处理渲染器进程中双向 IPC 的一种开发人员友好的方式
      */
-    openFile: () => ipcRenderer.invoke('dialog:openFile'),
-
-    onUpdateCounter: callback => ipcRenderer.on('update-counter', (event, arg) => {
-        callback(arg)
-    })
+    openFile: () => ipcRenderer.invoke('dialog:openFile')
 })
 
 
