@@ -53,7 +53,7 @@ function createWindow () {
         console.log('counter-value>value:', value) // 在 Node 控制台中打印 "hello-2"
     })
 
-    setMenu(mainWindow)
+    // setMenu(mainWindow)
 
     // 加载 index.html
     mainWindow.loadFile('index.html')
