@@ -1,7 +1,7 @@
 // main.js
 
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, ipcMain, dialog } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('node:path')
 
 // 这段程序将会在 Electron 结束初始化
@@ -38,8 +38,6 @@ function createWindow () {
 
     ipcMain.on('set-title', handleSetTitle)
 
-    ipcMain.handle('dialog:openFile', handleFileOpen)
-
     // 加载 index.html
     mainWindow.loadFile('index.html')
 
@@ -52,10 +50,4 @@ function handleSetTitle (event, title) {
     const webContents = event.sender
     const win = BrowserWindow.fromWebContents(webContents)
     win.setTitle(title)
-}
-
-// 监听来自渲染进程的 dialog:openFile 事件
-async function handleFileOpen() {
-    const { canceled, filePaths } = await dialog.showOpenDialog({})
-    if (!canceled) return filePaths[0]
 }

@@ -8,7 +8,6 @@ console.log('versions:', window.versions)
 
 ping()
 setTitle()
-openFile()
 
 async function ping() {
     const response = await window.versions.ping()
@@ -20,11 +19,5 @@ function setTitle() {
     const $title = document.getElementById('title')
     $btn.addEventListener('click', () => {
         window.electronAPI.setTitle($title.value)
-    })
-}
-
-function openFile() {
-    document.getElementById('btn2').addEventListener('click', async () => {
-        document.getElementById('filePath').innerText = await window.electronAPI.openFile()
     })
 }
