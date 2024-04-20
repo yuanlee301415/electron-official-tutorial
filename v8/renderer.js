@@ -36,6 +36,5 @@ function updateCounter() {
         const oldValue = Number($counter.innerText)
         const newValue = oldValue + value
         $counter.innerText = newValue
-        window.electronAPI.counterValue(newValue)
     })
 }

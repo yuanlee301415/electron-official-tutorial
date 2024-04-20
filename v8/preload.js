@@ -24,9 +24,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
 
     onUpdateCounter: callback => ipcRenderer.on('update-counter', (event, arg) => {
         callback(arg)
-    }),
-
-    counterValue: (value) => ipcRenderer.send('counter-value', value)
+    })
 })
 
 

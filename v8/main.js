@@ -49,9 +49,6 @@ function createWindow () {
         console.log('sync-message>arg:', arg) // 在 Node 控制台中打印 "hello-2"
         event.returnValue = 'hi-2'
     })
-    ipcMain.on('counter-value', (event, value) => {
-        console.log('counter-value>value:', value) // 在 Node 控制台中打印 "hello-2"
-    })
 
     setMenu(mainWindow)
 
