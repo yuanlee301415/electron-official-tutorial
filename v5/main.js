@@ -40,11 +40,6 @@ function createWindow () {
 
     ipcMain.handle('dialog:openFile', handleFileOpen)
 
-    ipcMain.on('async-message', (event, arg) => {
-        console.log(arg) // 在 Node 控制台中打印 "Hello"
-        event.reply('async-reply', 'Hi')
-    })
-
     // 加载 index.html
     mainWindow.loadFile('index.html')
 

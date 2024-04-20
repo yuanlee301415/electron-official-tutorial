@@ -22,14 +22,3 @@ contextBridge.exposeInMainWorld('electronAPI', {
      */
     openFile: () => ipcRenderer.invoke('dialog:openFile')
 })
-
-
-/**
- * 使用 ipcRenderer.send
- * 我们用于单向通信的 ipcRenderer.send API 也可用于双向通信。 这是在 Electron 7 之前通过 IPC 进行异步双向通信的推荐方式。
- * */
-ipcRenderer.on('async-reply', (event, arg) => {
-    console.log('async-reply>arg:', arg) // 在 DevTools 控制台中打印 "Hi"
-})
-ipcRenderer.send('async-message', 'hello')
-
