@@ -45,11 +45,6 @@ function createWindow () {
         event.reply('async-reply', 'Hi')
     })
 
-    ipcMain.on('sync-message', (event, arg) => {
-        console.log('sync-message>arg:', arg) // 在 Node 控制台中打印 "hello-2"
-        event.returnValue = 'hi-2'
-    })
-
     // 加载 index.html
     mainWindow.loadFile('index.html')
 

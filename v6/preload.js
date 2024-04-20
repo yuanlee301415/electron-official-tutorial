@@ -33,9 +33,3 @@ ipcRenderer.on('async-reply', (event, arg) => {
 })
 ipcRenderer.send('async-message', 'hello')
 
-/**
- * 使用 ipcRenderer.sendSync
- * ipcRenderer.sendSync API 向主进程发送消息，并 同步 等待响应。
- */
-const result = ipcRenderer.sendSync('sync-message', 'hello-2')
-console.log('sync-message>result:', result) // 在 DevTools 控制台中打印 "hi-2"
